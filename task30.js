@@ -8,7 +8,7 @@ window.onload = function () {
     var oPsw2 = document.getElementById("psw2");
     var oEmail = document.getElementById("email");
     var oPhone = document.getElementById("phone");
-    addEventHandler(oName, "focus", function () {
+    addEventHandler(oName, "focus", function () {//添加事件们~~~
         document.getElementById("spanName").style.visibility = "visible";
     });
     addEventHandler(oName, "blur", checkName);
@@ -30,7 +30,7 @@ window.onload = function () {
     addEventHandler(oPhone, "blur", checkPhone);
 };
 
-function checkPhone(){
+function checkPhone() {//验证手机号码
     var oSpanphone = document.getElementById("spanPhone");
     var str = this.value.trim();
     var length = getLength(str);
@@ -40,18 +40,18 @@ function checkPhone(){
         this.style.borderColor = "red";
     } else {
         var reg = /^1\d{10}$/;
-        if (!reg.test(str)){
+        if (!reg.test(str)) {
             oSpanphone.innerHTML = '请输入正确的手机号码';
             oSpanphone.style.color = "red";
             this.style.borderColor = "red";
-        }else {
+        } else {
             oSpanphone.innerHTML = '手机输入正确！';
             oSpanphone.style.color = "green";
             this.style.borderColor = "green";
         }
     }
 }
-function checkEmail() {
+function checkEmail() {//验证邮箱
     var oSpanemail = document.getElementById("spanEmail");
     var str = this.value.trim();
     var length = getLength(str);
@@ -60,8 +60,8 @@ function checkEmail() {
         oSpanemail.style.color = "red";
         this.style.borderColor = "red";
     } else {
-        var reg = /a/;
-        if (reg.test(str)) {
+        var reg = /^([a-zA-Z0-9_-])+@([A-Za-z0-9]+[-.])+[A-Za-z]{2,4}$/;
+        if (!reg.test(str)) {
             oSpanemail.innerHTML = '请输入正确的邮箱';
             oSpanemail.style.color = "red";
             this.style.borderColor = "red";
@@ -74,7 +74,7 @@ function checkEmail() {
     }
 }
 
-function checkSame() {
+function checkSame() {//验证两次输入的密码是否相同
     var oPsw = document.getElementById("psw");
     var oSpanpsw2 = document.getElementById("spanPsw2");
     var str = this.value.trim();
@@ -97,7 +97,7 @@ function checkSame() {
         this.style.borderColor = "red";
     }
 }
-function checkPsw() {
+function checkPsw() { //验证密码
     var oSpanpsw = document.getElementById("spanPsw");
     var str = this.value.trim();
     var length = getLength(str);
@@ -114,7 +114,7 @@ function checkPsw() {
         oSpanpsw.style.color = "red";
         this.style.borderColor = "red";
     } else {
-        var reg = /[^A-Za-z0-9]/g;
+        var reg = /[^A-Za-z0-9]/g;//判断用户是否输入了大小写字母和数字以外的字符
         if (reg.test(str)) {
             oSpanpsw.innerHTML = '含有非法字符！';
             oSpanpsw.style.color = "red";
@@ -127,8 +127,8 @@ function checkPsw() {
         }
     }
 }
-function getLength(str) {
-    return str.replace(/[^\x00-\xff]/g, "ym").length;//统计用户输入的字数,接下来进行一系列判断
+function getLength(str) {//统计用户输入的字数,接下来进行一系列判断
+    return str.replace(/[^\x00-\xff]/g, "ym").length;
 }
 function checkName() {
     var oSpanname = document.getElementById("spanName");
@@ -163,7 +163,7 @@ function checkName() {
     }
 }
 
-function addEventHandler(ele, event, hanlder) {
+function addEventHandler(ele, event, hanlder) {//浏览器兼容
     if (ele.addEventListener) {
         ele.addEventListener(event, hanlder, false);
     } else if (ele.attachEvent) {
