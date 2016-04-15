@@ -29,7 +29,9 @@ window.onload = function () {
     });
     addEventHandler(oPhone, "blur", checkPhone);
 };
+function submit(){
 
+}
 function checkPhone() {//验证手机号码
     var oSpanphone = document.getElementById("spanPhone");
     var str = this.value.trim();
