@@ -11,7 +11,7 @@ window.onload = function () {
     addEventHandler(oName, "focus", function () {//添加事件们~~~
         document.getElementById("spanName").style.visibility = "visible";
     });
-    addEventHandler(oName,"keyup",show);
+    addEventHandler(oName, "keyup", show);
     addEventHandler(oName, "blur", checkName);
     addEventHandler(oPsw, "focus", function () {
         document.getElementById("spanPsw").style.visibility = "visible";
@@ -42,10 +42,10 @@ function submit() {
         alert("输入有误,请按要求填写每项信息");
     }
 }
-function show(){
+function show() {
     var oSpanname = document.getElementById("spanName");
-    oSpanname.style.color="#cbcbcb";
-    oSpanname.innerHTML="已输入"+getLength(this.value)+"个字符";
+    oSpanname.style.color = "#cbcbcb";
+    oSpanname.innerHTML = "已输入" + getLength(this.value) + "个字符";
 }
 function totalCheck(v) {
     if (v.style.borderColor == "green") {
