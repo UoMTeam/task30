@@ -30,7 +30,23 @@ window.onload = function () {
     addEventHandler(oPhone, "blur", checkPhone);
 };
 function submit(){
+    var oName = document.getElementById("name");
+    var oPsw = document.getElementById("psw");
+    var oPsw2 = document.getElementById("psw2");
+    var oEmail = document.getElementById("email");
+    var oPhone = document.getElementById("phone");
+    if (totalCheck(oName) && totalCheck(oPsw) && totalCheck(oPsw2) && totalCheck(oEmail) && totalCheck(oPhone)){
+        alert("提交成功");
+    }else {
+        alert("提交失败,请按要求填写每项信息");
+    }
+}
 
+function totalCheck(v){
+    if (v.style.borderColor=="green"){
+        return true;
+    }
+    return false;
 }
 function checkPhone() {//验证手机号码
     var oSpanphone = document.getElementById("spanPhone");
