@@ -11,6 +11,7 @@ window.onload = function () {
     addEventHandler(oName, "focus", function () {//添加事件们~~~
         document.getElementById("spanName").style.visibility = "visible";
     });
+    addEventHandler(oName,"keyup",show);
     addEventHandler(oName, "blur", checkName);
     addEventHandler(oPsw, "focus", function () {
         document.getElementById("spanPsw").style.visibility = "visible";
@@ -29,21 +30,25 @@ window.onload = function () {
     });
     addEventHandler(oPhone, "blur", checkPhone);
 };
-function submit(){
+function submit() {
     var oName = document.getElementById("name");
     var oPsw = document.getElementById("psw");
     var oPsw2 = document.getElementById("psw2");
     var oEmail = document.getElementById("email");
     var oPhone = document.getElementById("phone");
-    if (totalCheck(oName) && totalCheck(oPsw) && totalCheck(oPsw2) && totalCheck(oEmail) && totalCheck(oPhone)){
+    if (totalCheck(oName) && totalCheck(oPsw) && totalCheck(oPsw2) && totalCheck(oEmail) && totalCheck(oPhone)) {
         alert("提交成功");
-    }else {
+    } else {
         alert("输入有误,请按要求填写每项信息");
     }
 }
-
-function totalCheck(v){
-    if (v.style.borderColor=="green"){
+function show(){
+    var oSpanname = document.getElementById("spanName");
+    oSpanname.style.color="#cbcbcb";
+    oSpanname.innerHTML="已输入"+getLength(this.value)+"个字符";
+}
+function totalCheck(v) {
+    if (v.style.borderColor == "green") {
         return true;
     }
     return false;
