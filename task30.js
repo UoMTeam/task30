@@ -8,54 +8,98 @@ window.onload = function () {
     var oPsw2 = document.getElementById("psw2");
     var oEmail = document.getElementById("email");
     var oPhone = document.getElementById("phone");
-    addEventHandler(oName,"focus",function(){
-        document.getElementById("spanName").style.visibility="visible";
+    addEventHandler(oName, "focus", function () {
+        document.getElementById("spanName").style.visibility = "visible";
     });
-    addEventHandler(oName,"blur",checkName);
-    addEventHandler(oPsw,"focus",function(){
-        document.getElementById("spanPsw").style.visibility="visible";
+    addEventHandler(oName, "blur", checkName);
+    addEventHandler(oPsw, "focus", function () {
+        document.getElementById("spanPsw").style.visibility = "visible";
     });
-    addEventHandler(oPsw,"blur",checkPsw);
-    addEventHandler(oPsw2,"focus",function(){
-        document.getElementById("spanPsw2").style.visibility="visible";
+    addEventHandler(oPsw, "blur", checkPsw);
+    addEventHandler(oPsw2, "focus", function () {
+        document.getElementById("spanPsw2").style.visibility = "visible";
     });
-    addEventHandler(oPsw2,"blur",checkSame);
-    addEventHandler(oEmail,"focus",function(){
-        document.getElementById("spanEmail").style.visibility="visible";
+    addEventHandler(oPsw2, "blur", checkSame);
+    addEventHandler(oEmail, "focus", function () {
+        document.getElementById("spanEmail").style.visibility = "visible";
     });
-    addEventHandler(oEmail,"blur",checkEmail);
+    addEventHandler(oEmail, "blur", checkEmail);
+    addEventHandler(oPhone, "focus", function () {
+        document.getElementById("spanPhone").style.visibility = "visible";
+    });
+    addEventHandler(oPhone, "blur", checkPhone);
 };
 
-function checkEmail(){
-    
+function checkPhone(){
+    var oSpanphone = document.getElementById("spanPhone");
+    var str = this.value.trim();
+    var length = getLength(str);
+    if (length == 0) {
+        oSpanphone.innerHTML = "手机不能为空";
+        oSpanphone.style.color = "red";
+        this.style.borderColor = "red";
+    } else {
+        var reg = /^1\d{10}$/;
+        if (!reg.test(str)){
+            oSpanphone.innerHTML = '请输入正确的手机号码';
+            oSpanphone.style.color = "red";
+            this.style.borderColor = "red";
+        }else {
+            oSpanphone.innerHTML = '手机输入正确！';
+            oSpanphone.style.color = "green";
+            this.style.borderColor = "green";
+        }
+    }
+}
+function checkEmail() {
+    var oSpanemail = document.getElementById("spanEmail");
+    var str = this.value.trim();
+    var length = getLength(str);
+    if (length == 0) {
+        oSpanemail.innerHTML = "邮箱不能为空";
+        oSpanemail.style.color = "red";
+        this.style.borderColor = "red";
+    } else {
+        var reg = /a/;
+        if (reg.test(str)) {
+            oSpanemail.innerHTML = '请输入正确的邮箱';
+            oSpanemail.style.color = "red";
+            this.style.borderColor = "red";
+
+        } else {
+            oSpanemail.innerHTML = '邮箱输入正确！';
+            oSpanemail.style.color = "green";
+            this.style.borderColor = "green";
+        }
+    }
 }
 
-function checkSame(){
+function checkSame() {
     var oPsw = document.getElementById("psw");
-    var oSpanpsw2=document.getElementById("spanPsw2");
+    var oSpanpsw2 = document.getElementById("spanPsw2");
     var str = this.value.trim();
     var length = getLength(str);
     if (length == 0) {
         oSpanpsw2.innerHTML = "密码不能为空";
         oSpanpsw2.style.color = "red";
         this.style.borderColor = "red";
-    }else if (this.value != oPsw.value){
+    } else if (this.value != oPsw.value) {
         oSpanpsw2.innerHTML = "两次输入不一致";
         oSpanpsw2.style.color = "red";
         this.style.borderColor = "red";
-    } else if(oPsw.style.borderColor=="green"){
+    } else if (oPsw.style.borderColor == "green") {
         oSpanpsw2.innerHTML = '两次密码相同！';
         oSpanpsw2.style.color = "green";
         this.style.borderColor = "green";
-    } else{
+    } else {
         oSpanpsw2.innerHTML = "首次密码输入不正确";
         oSpanpsw2.style.color = "red";
         this.style.borderColor = "red";
     }
 }
-function checkPsw(){
-    var oSpanpsw=document.getElementById("spanPsw");
-    var str=this.value.trim();
+function checkPsw() {
+    var oSpanpsw = document.getElementById("spanPsw");
+    var str = this.value.trim();
     var length = getLength(str);
     if (length == 0) {
         oSpanpsw.innerHTML = "密码不能为空";
@@ -69,7 +113,7 @@ function checkPsw(){
         oSpanpsw.innerHTML = "输入的字数多于16位";
         oSpanpsw.style.color = "red";
         this.style.borderColor = "red";
-    }else {
+    } else {
         var reg = /[^A-Za-z0-9]/g;
         if (reg.test(str)) {
             oSpanpsw.innerHTML = '含有非法字符！';
@@ -83,12 +127,12 @@ function checkPsw(){
         }
     }
 }
-function getLength(str){
+function getLength(str) {
     return str.replace(/[^\x00-\xff]/g, "ym").length;//统计用户输入的字数,接下来进行一系列判断
 }
-function checkName(){
-    var oSpanname=document.getElementById("spanName");
-    var str=this.value.trim();
+function checkName() {
+    var oSpanname = document.getElementById("spanName");
+    var str = this.value.trim();
     var length = getLength(str);
     if (length == 0) {
         oSpanname.innerHTML = "名称不能为空";
