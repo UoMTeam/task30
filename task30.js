@@ -38,7 +38,7 @@ function submit(){
     if (totalCheck(oName) && totalCheck(oPsw) && totalCheck(oPsw2) && totalCheck(oEmail) && totalCheck(oPhone)){
         alert("提交成功");
     }else {
-        alert("提交失败,请按要求填写每项信息");
+        alert("输入有误,请按要求填写每项信息");
     }
 }
 
